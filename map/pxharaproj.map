@@ -1,0 +1,40 @@
+# pdfm-pxharapmc.map
+pxharapmc-j-j40  Identity-H  HaranoAjiMincho-ExtraLight.otf
+r-pxharapmc-j-jy1  H  HaranoAjiMincho-ExtraLight.otf
+r-pxharapmc-j-jy2  UniJIS-UTF16-H  HaranoAjiMincho-ExtraLight.otf
+pxharapmc-l-j40  Identity-H  HaranoAjiMincho-Light.otf
+r-pxharapmc-l-jy1  H  HaranoAjiMincho-Light.otf
+r-pxharapmc-l-jy2  UniJIS-UTF16-H  HaranoAjiMincho-Light.otf
+pxharapmc-r-j40  Identity-H  HaranoAjiMincho-Regular.otf
+r-pxharapmc-r-jy1  H  HaranoAjiMincho-Regular.otf
+r-pxharapmc-r-jy2  UniJIS-UTF16-H  HaranoAjiMincho-Regular.otf
+pxharapmc-m-j40  Identity-H  HaranoAjiMincho-Medium.otf
+r-pxharapmc-m-jy1  H  HaranoAjiMincho-Medium.otf
+r-pxharapmc-m-jy2  UniJIS-UTF16-H  HaranoAjiMincho-Medium.otf
+pxharapmc-b-j40  Identity-H  HaranoAjiMincho-Bold.otf
+r-pxharapmc-b-jy1  H  HaranoAjiMincho-Bold.otf
+r-pxharapmc-b-jy2  UniJIS-UTF16-H  HaranoAjiMincho-Bold.otf
+pxharapmc-h-j40  Identity-H  HaranoAjiMincho-Heavy.otf
+r-pxharapmc-h-jy1  H  HaranoAjiMincho-Heavy.otf
+r-pxharapmc-h-jy2  UniJIS-UTF16-H  HaranoAjiMincho-Heavy.otf
+# EOF
+# pdfm-pxharapgt.map
+pxharapgt-j-j40  Identity-H  HaranoAjiGothic-ExtraLight.otf
+r-pxharapgt-j-jy1  H  HaranoAjiGothic-ExtraLight.otf
+r-pxharapgt-j-jy2  UniJIS-UTF16-H  HaranoAjiGothic-ExtraLight.otf
+pxharapgt-l-j40  Identity-H  HaranoAjiGothic-Light.otf
+r-pxharapgt-l-jy1  H  HaranoAjiGothic-Light.otf
+r-pxharapgt-l-jy2  UniJIS-UTF16-H  HaranoAjiGothic-Light.otf
+pxharapgt-r-j40  Identity-H  HaranoAjiGothic-Regular.otf
+r-pxharapgt-r-jy1  H  HaranoAjiGothic-Regular.otf
+r-pxharapgt-r-jy2  UniJIS-UTF16-H  HaranoAjiGothic-Regular.otf
+pxharapgt-m-j40  Identity-H  HaranoAjiGothic-Medium.otf
+r-pxharapgt-m-jy1  H  HaranoAjiGothic-Medium.otf
+r-pxharapgt-m-jy2  UniJIS-UTF16-H  HaranoAjiGothic-Medium.otf
+pxharapgt-b-j40  Identity-H  HaranoAjiGothic-Bold.otf
+r-pxharapgt-b-jy1  H  HaranoAjiGothic-Bold.otf
+r-pxharapgt-b-jy2  UniJIS-UTF16-H  HaranoAjiGothic-Bold.otf
+pxharapgt-h-j40  Identity-H  HaranoAjiGothic-Heavy.otf
+r-pxharapgt-h-jy1  H  HaranoAjiGothic-Heavy.otf
+r-pxharapgt-h-jy2  UniJIS-UTF16-H  HaranoAjiGothic-Heavy.otf
+# EOF
