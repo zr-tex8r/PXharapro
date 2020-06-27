@@ -1,0 +1,195 @@
+%%
+%% This is file 'pxharaproj.sty'.
+%%
+%% Copyright (c) 2020 Takayuki YATO (aka. "ZR")
+%%   GitHub:   https://github.com/zr-tex8r
+%%   Twitter:  @zr_tex8r
+%%
+%% This package is distributed under the MIT License.
+%%
+
+%% package declaration
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{pxharaproj}[2020/06/28 v0.2]
+\def\pxhj@pkgname{pxharaproj}
+
+%--------------------------------------- general
+
+%% packages
+\RequirePackage{ifptex,keyval}
+\RequirePackage{etoolbox}
+\ifx\numdef\@undefined \endinput \fi
+
+%% unique tokens
+\def\pxhj@end{\pxhj@end@}
+\let\pxhj@mk\indent
+
+%% \pxhj@fpfx
+\def\pxhj@fpfx{pxharap}
+
+%% \pxhj@JY/\pxhj@JT
+\ifnativeuptex
+\def\pxhj@JY{JY2}\def\pxhj@jy{jy2}
+\def\pxhj@JT{JT2}\def\pxhj@jt{jt2}
+\else
+\def\pxhj@JY{JY1}\def\pxhj@jy{jy1}
+\def\pxhj@JT{JT1}\def\pxhj@jt{jt1}
+\fi
+
+%% cleanup
+\@onlypreamble\pxhj@do
+\@onlypreamble\pxhj@do@a
+
+%--------------------------------------- package options
+
+%% variables
+\let\pxhj@driver\relax
+\let\pxhj@scale\relax
+
+% drivers
+\DeclareOption{dvipdfmx}{\let\pxhj@driver=d}
+\DeclareOption{dvips}{\let\pxhj@driver=0}
+\DeclareOption{nodvidriver}{\let\pxhj@driver=0}
+% keyval
+\DeclareOption*{
+  \edef\pxhj@do{\noexpand\setkeys{pxhy}{\CurrentOption}}\pxhj@do}
+% 'scale'
+\define@key{pxhy}{scale}{\def\pxhj@scale{#1}}
+
+%% dispatch
+\ProcessOptions*
+
+%% resolve \pxhj@scale
+\ifx\pxhj@scale\relax
+  \ifdefined\pxharaproScale
+    \let\pxhj@scale\pxharaproScale
+  \else\ifdefined\Cjascale
+    \let\pxhj@scale\Cjascale
+  \else
+    \def\pxhj@scale{1}
+  \fi\fi
+\fi
+
+%--------------------------------------- family 'pxharap*'
+
+%% for one weight
+\def\pxhj@do#1#2{%
+  \pxhj@do@a{\pxhj@fpfx mc}{#1}{\pxhj@fpfx mc-#2}{mc}%
+  \pxhj@do@a{\pxhj@fpfx gt}{#1}{\pxhj@fpfx gt-#2}{gt}}
+\def\pxhj@do@a#1#2#3#4{%
+  \DeclareFontFamily{\pxhj@JY}{#1}{}%
+  \DeclareFontShape{\pxhj@JY}{#1}{#2}{n}{<->s*[\pxhj@scale]#3-\pxhj@jy}{}%
+  \DeclareFontShape{\pxhj@JY}{#1}{#2}{it}{<->ssub*#1/#2/n}{}%
+  \DeclareFontShape{\pxhj@JY}{#1}{#2}{sl}{<->ssub*#1/#2/n}{}%
+  \DeclareFontFamily{\pxhj@JT}{#1}{}%
+  \DeclareFontShape{\pxhj@JT}{#1}{#2}{n}{<->ssub*#4/m/n}{}%
+  \DeclareFontShape{\pxhj@JT}{#1}{#2}{it}{<->ssub*#1/#2/n}{}%
+  \DeclareFontShape{\pxhj@JT}{#1}{#2}{sl}{<->ssub*#1/#2/n}{}}
+% weight list
+\pxhj@do{el}{j}
+\pxhj@do{l} {l}
+\pxhj@do{m} {r}
+\pxhj@do{sb}{m}
+\pxhj@do{b} {b}
+\pxhj@do{bx}{b}
+\pxhj@do{eb}{h}
+
+%--------------------------------------- 
+
+%% variabvles
+\let\pxhj@otf@weight\relax
+\let\pxhj@weight\relax
+
+%% \pxhj@declare@ssub{<fam>}{<ser>}{<shp>}{<sub-spec>}
+\def\pxhj@declare@ssub#1#2#3#4{%
+  \DeclareFontShape{\pxhj@JY}{#1}{#2}{#3}{<->ssub*#4}{}%
+  \DeclareFontShape{\pxhj@JT}{#1}{#2}{#3}{<->ssub*#4}{}}
+
+%% \pxhj@get@weight{<shp-sym>}
+\@onlypreamble\pxhj@get@weight
+\def\pxhj@get@weight#1{%
+  \let\pxhj@weight\relax
+  \ifdefined\JaFontReplacementFor
+    \edef\pxhj@tmpa{\JaFontReplacementFor{#1}}%
+    \edef\pxhj@do##1##2{%
+      \noexpand\pxhj@get@weight@a{Mincho}{##1}{\pxhj@tmpa}{##2}%
+      \noexpand\pxhj@get@weight@a{Gothic}{##1}{\pxhj@tmpa}{##2}}%
+    \pxhj@do{ExtraLight}{el}\pxhj@do{Light}{l}\pxhj@do{Regular}{m}%
+    \pxhj@do{Medium}{sb}\pxhj@do{Bold}{b}\pxhj@do{Heavy}{eb}%
+  \fi
+  \ifx\pxhj@weight\relax
+    \def\pxhj@do##1##2{%
+      \ifstrequal{##1}{#1}{\def\pxhj@weight{##2}}{}}%
+    \pxhj@do{mnl}{l}\pxhj@do{mnr}{m}\pxhj@do{mnb}{b}%
+    \pxhj@do{gtu}{sb}\pxhj@do{gtr}{m}\pxhj@do{gtb}{b}\pxhj@do{gtx}{eb}%
+  \fi}
+\def\pxhj@get@weight@a#1#2#3#4{%
+  \ifstrequal{HaranoAji#1-#2.otf}{#3}{\def\pxhj@weight{#4}}{}}
+
+%% \pxhj@std@shape
+\@onlypreamble\pxhj@std@shape
+\def\pxhj@std@shape#1#2#3{%
+  \ifstrequal{#3}{*}{%
+    \def\pxhj@tmpa{\gtdefault/m}%
+  }{%else
+    \pxhj@get@weight{#3}%
+    \def\pxhj@tmpa{\pxhj@fpfx#1/\pxhj@weight}}%
+  \pxhj@declare@ssub{\csuse{#1default}}{#2}{prp}{\pxhj@tmpa/n}%
+  \ifstrequal{#2}{b}{%
+    \pxhj@declare@ssub{\csuse{#1default}}{bx}{prp}{\pxhj@tmpa/n}%
+  }{}}
+
+%%<+> \pxharaprojInitialize
+\newcommand*{\pxharaprojInitialize}{%
+  \global\let\pxharaprojInitialize\relax
+  %
+  \@ifpackagewith{otf}{deluxe}{%
+    \let\pxhj@otf@weight=d%
+  }{\@ifpackagewith{otf}{bold}{%
+    \let\pxhj@otf@weight=b%
+  }{\@ifpackagewith{otf}{expert}{%
+    \let\pxhj@otf@weight=r% 'expert' cancels 'noreplace'
+  }{\@ifpackagewith{otf}{noreplace}{%
+    \let\pxhj@otf@weight=n%
+  }{\@ifpackageloaded{otf}{%
+    \let\pxhj@otf@weight=r%
+  }{%else
+    \let\pxhj@otf@weight=n%
+  }}}}}%
+  %
+  \ifx d\pxhj@otf@weight % deluxe
+    \pxhj@std@shape{mc}{l}{mnl}%
+    \pxhj@std@shape{mc}{m}{mnr}%
+    \pxhj@std@shape{mc}{b}{mnb}%
+    \pxhj@std@shape{gt}{m}{gtr}%
+    \pxhj@std@shape{gt}{b}{gtb}%
+    \pxhj@std@shape{gt}{eb}{gtx}%
+  \else\ifx b\pxhj@otf@weight % bold
+    \pxhj@std@shape{mc}{m}{mnr}%
+    \pxhj@std@shape{mc}{b}{*}%
+    \pxhj@std@shape{gt}{m}{gtb}%
+    \pxhj@std@shape{gt}{b}{*}%
+  \else % r(replace) or n(no-otf)
+    \pxhj@std@shape{mc}{m}{mnr}%
+    \pxhj@std@shape{mc}{b}{*}%
+    \pxhj@std@shape{gt}{m}{gtu}%
+    \pxhj@std@shape{gt}{b}{*}%
+  \fi\fi}
+\AtBeginDocument{%
+  \pxharaprojInitialize
+  \ifundef{\propshape}{%
+    \DeclareRobustCommand\propshape{%
+      \not@math@alphabet\propshape\relax
+      \kanjishape{prp}\selectfont}%
+  }{}}
+
+%--------------------------------------- map file
+\ifx d\pxhj@driver
+
+% declare loading the map file
+\AtBeginDvi{\special{pdf:mapfile \pxhj@pkgname.map}}
+
+\fi
+%--------------------------------------- done
+\endinput
+%% EOF
