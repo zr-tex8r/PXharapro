@@ -1,0 +1,20 @@
+% upLaTeX文書; UTF-8
+\documentclass[uplatex,dvipdfmx,a4paper]{jsarticle}
+\usepackage[deluxe]{otf}
+% updmapで標準和文フォントにharanoajiが選択されている
+% 状態を想定する. TeX Live 2020ではそれが既定である.
+% あるいはpxchfonでharanoajiプリセットを選択してもよい.
+%\usepackage[haranoaji]{pxchfon}
+\usepackage{pxharaproj}
+% 見出しの和文フォントに'pxharamc'を指定.
+\renewcommand*{\headfont}{\kanjifamily{pxharapmc}\bfseries}
+\begin{document}
+\section{日本語はアレ、ゆきだるま☃は非アレ}
+% '\propshape'で和文フォントがプロポーショナル字形に切り替わる.
+\mcfamily\ltseries ☃っ☃っ？ {\propshape ☃っ☃っ}！\par
+\mcfamily\mdseries ☃っ☃っ？ {\propshape ☃っ☃っ}！\par
+\mcfamily\bfseries ☃っ☃っ？ {\propshape ☃っ☃っ}！\par
+\gtfamily\mdseries ☃っ☃っ？ {\propshape ☃っ☃っ}！\par
+\gtfamily\bfseries ☃っ☃っ？ {\propshape ☃っ☃っ}！\par
+\gtfamily\ebseries ☃っ☃っ？ {\propshape ☃っ☃っ}！\par
+\end{document}
